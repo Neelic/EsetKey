@@ -46,7 +46,7 @@ class EsetRegister(object):
             console_log("Cookies were not bypassed (it doesn't affect the algorithm, I think :D)", ERROR, silent_mode=SILENT_MODE)
 
         exec_js(f"return {GET_EBID}('email')").send_keys(self.email_obj.email)
-        uCE(self.driver, f"return {CLICK_WITH_BOOL}({DEFINE_GET_EBAV_FUNCTION}('button', 'data-label', 'register-continue-button'))")
+        uCE(self.driver, f"return {CLICK_WITH_BOOL}({DEFINE_GET_EBAV_FUNCTION}('button', 'data-label', 'register-create-account-button'))")
         time.sleep(1)
         try:
             if exec_js(f"return {GET_EBAV}('div', 'data-label', 'register-email-formGroup-validation')") is not None:
@@ -126,7 +126,7 @@ class EsetKeygen(object):
 
         logging.info(f'[{self.mode}] Request sending...')
         console_log(f'\n[{self.mode}] Request sending...', INFO, silent_mode=SILENT_MODE)
-        self.driver.get('https://home.eset.com/subscriptions/choose-trial')
+        self.driver.get('https://home.eset.com/onboarding/trial-subscription')
         uCE(self.driver, f"return {GET_EBAV}('button', 'data-label', 'subscription-choose-trial-ehsp-card-button') != null")
         if self.mode == 'ESET HOME':
             uCE(self.driver, f"return {CLICK_WITH_BOOL}({GET_EBAV}('button', 'data-label', 'subscription-choose-trial-ehsp-card-button'))")
